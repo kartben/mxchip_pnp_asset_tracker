@@ -18,6 +18,7 @@
 #include "utilities/position_interface.h"
 #include "utilities/screen_interface.h"
 #include "utilities/settings_interface.h"
+#include "utilities/modeldefinition_interface.h"
 
 #include "mxchip_iot_devkit_impl.h"
 

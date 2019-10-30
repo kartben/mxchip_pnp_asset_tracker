@@ -55,7 +55,7 @@ static char *deviceId = NULL;
 static const char *digitalTwinSample_CustomProvisioningData = "{"
                                                               "\"__iot:interfaces\":"
                                                               "{"
-                                                              "\"CapabilityModelId\": \"urn:mxchip:mxchip_iot_devkit:1\" ,"
+                                                              "\"CapabilityModelId\": \"urn:contosoartshipping:asset_tracker:1\" ,"
                                                               "\"CapabilityModel\": \"" DIGITALTWIN_DEVICE_CAPABILITY_MODEL_INLINE_DATA "\""
                                                               "}"
                                                               "}";

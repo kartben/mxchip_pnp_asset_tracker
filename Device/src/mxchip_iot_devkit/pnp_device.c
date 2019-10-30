@@ -7,7 +7,7 @@
 #include "pnp_device.h"
 
 // Number of DigitalTwin Interfaces that this DigitalTwin Device supports.
-#define DIGITALTWIN_INTERFACE_NUM 6
+#define DIGITALTWIN_INTERFACE_NUM 7
 
 #define DEVICEINFO_INDEX 0
 #define SENSORS_INDEX 1
@@ -15,10 +15,11 @@
 #define SCREEN_INDEX 3
 #define SETTINGS_INDEX 4
 #define POSITION_INDEX 5
+#define MODEL_DEF_INDEX 6
 
 #define DEFAULT_SEND_TELEMETRY_INTERVAL_MS 5000
 
-#define DEVICE_CAPABILITY_MODEL_URI "urn:contoso:asset_tracker:1"
+#define DEVICE_CAPABILITY_MODEL_URI "urn:contosoartshipping:asset_tracker:1"
 
 static DIGITALTWIN_INTERFACE_CLIENT_HANDLE interfaceClientHandles[DIGITALTWIN_INTERFACE_NUM];
 static TICK_COUNTER_HANDLE tickcounter = NULL;
@@ -78,7 +79,13 @@ int pnp_device_initialize(const char* connectionString, const char* trustedCert)
 
     if ((interfaceClientHandles[POSITION_INDEX] = PositionInterface_Create(digitalTwinDeviceClientHandle)) == NULL)
     {
-        LogError("SettingsInterface_Create failed");
+        LogError("PositionInterface_Create failed");
+        return -1;
+    }
+
+    if ((interfaceClientHandles[MODEL_DEF_INDEX] = ModelDefinitionInterface_Create(digitalTwinDeviceClientHandle)) == NULL)
+    {
+        LogError("ModelDefinitionInterface_Create failed");
         return -1;
     }
 
@@ -151,6 +158,11 @@ void pnp_device_close()
     if (interfaceClientHandles[POSITION_INDEX] != NULL)
     {
         PositionInterface_Close(interfaceClientHandles[POSITION_INDEX]);
+    }
+
+    if (interfaceClientHandles[MODEL_DEF_INDEX] != NULL)
+    {
+        ModelDefinitionInterface_Close(interfaceClientHandles[MODEL_DEF_INDEX]);
     }
 
     DigitalTwinClientHelper_DeInitialize();

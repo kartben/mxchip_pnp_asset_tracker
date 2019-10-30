@@ -1,0 +1,524 @@
+{
+  "@id": "urn:contosoartshipping:asset_tracker:1",
+  "@type": "CapabilityModel",
+  "implements": [
+    {
+      "@id": "urn:mxchip:mxchip_iot_devkit:deviceinfo:1",
+      "@type": "InterfaceInstance",
+      "name": "deviceinfo",
+      "schema": {
+        "@id": "urn:azureiot:DeviceManagement:DeviceInformation:1",
+        "@type": "Interface",
+        "displayName": {
+          "en": "Device Information"
+        },
+        "contents": [
+          {
+            "@id": "urn:azureiot:DeviceManagement:DeviceInformation:manufacturer:1",
+            "@type": "Property",
+            "description": {
+              "en": "Company name of the device manufacturer. This could be the same as the name of the original equipment manufacturer (OEM). Ex. Contoso."
+            },
+            "displayName": {
+              "en": "Manufacturer"
+            },
+            "name": "manufacturer",
+            "schema": "string"
+          },
+          {
+            "@id": "urn:azureiot:DeviceManagement:DeviceInformation:model:1",
+            "@type": "Property",
+            "description": {
+              "en": "Device model name or ID. Ex. Surface Book 2."
+            },
+            "displayName": {
+              "en": "Device model"
+            },
+            "name": "model",
+            "schema": "string"
+          },
+          {
+            "@id": "urn:azureiot:DeviceManagement:DeviceInformation:swVersion:1",
+            "@type": "Property",
+            "description": {
+              "en": "Version of the software on your device. This could be the version of your firmware. Ex. 1.3.45"
+            },
+            "displayName": {
+              "en": "Software version"
+            },
+            "name": "swVersion",
+            "schema": "string"
+          },
+          {
+            "@id": "urn:azureiot:DeviceManagement:DeviceInformation:osName:1",
+            "@type": "Property",
+            "description": {
+              "en": "Name of the operating system on the device. Ex. Windows 10 IoT Core."
+            },
+            "displayName": {
+              "en": "Operating system name"
+            },
+            "name": "osName",
+            "schema": "string"
+          },
+          {
+            "@id": "urn:azureiot:DeviceManagement:DeviceInformation:processorArchitecture:1",
+            "@type": "Property",
+            "description": {
+              "en": "Architecture of the processor on the device. Ex. x64 or ARM."
+            },
+            "displayName": {
+              "en": "Processor architecture"
+            },
+            "name": "processorArchitecture",
+            "schema": "string"
+          },
+          {
+            "@id": "urn:azureiot:DeviceManagement:DeviceInformation:processorManufacturer:1",
+            "@type": "Property",
+            "description": {
+              "en": "Name of the manufacturer of the processor on the device. Ex. Intel."
+            },
+            "displayName": {
+              "en": "Processor manufacturer"
+            },
+            "name": "processorManufacturer",
+            "schema": "string"
+          },
+          {
+            "@id": "urn:azureiot:DeviceManagement:DeviceInformation:totalStorage:1",
+            "@type": "Property",
+            "description": {
+              "en": "Total available storage on the device in kilobytes. Ex. 2048000 kilobytes."
+            },
+            "displayName": {
+              "en": "Total storage"
+            },
+            "name": "totalStorage",
+            "displayUnit": {
+              "en": "kilobytes"
+            },
+            "schema": "long"
+          },
+          {
+            "@id": "urn:azureiot:DeviceManagement:DeviceInformation:totalMemory:1",
+            "@type": "Property",
+            "description": {
+              "en": "Total available memory on the device in kilobytes. Ex. 256000 kilobytes."
+            },
+            "displayName": {
+              "en": "Total memory"
+            },
+            "name": "totalMemory",
+            "displayUnit": {
+              "en": "kilobytes"
+            },
+            "schema": "long"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "urn:mxchip:mxchip_iot_devkit:leds:1",
+      "@type": "InterfaceInstance",
+      "name": "leds",
+      "schema": {
+        "@id": "urn:mxchip:built_in_leds:1",
+        "@type": "Interface",
+        "displayName": {
+          "en": "mxchip_leds"
+        },
+        "contents": [
+          {
+            "@id": "urn:mxchip:built_in_leds:blink:1",
+            "@type": "Command",
+            "commandType": "synchronous",
+            "request": {
+              "@id": "urn:mxchip:built_in_leds:blink:interval:1",
+              "@type": "SchemaField",
+              "name": "interval",
+              "schema": "long"
+            },
+            "response": {
+              "@id": "urn:mxchip:built_in_leds:blink:blinkResponse:1",
+              "@type": "SchemaField",
+              "name": "blinkResponse",
+              "schema": {
+                "@id": "urn:mxchip:built_in_leds:blink:blinkResponse:0hl3bwgc:1",
+                "@type": "Object",
+                "fields": [
+                  {
+                    "@id": "urn:mxchip:built_in_leds:blink:blinkResponse:0hl3bwgc:description:1",
+                    "@type": "SchemaField",
+                    "name": "description",
+                    "schema": "string"
+                  }
+                ]
+              }
+            },
+            "description": {
+              "en": "This command will begin blinking the built-in RGBLED for given time interval."
+            },
+            "name": "blink"
+          },
+          {
+            "@id": "urn:mxchip:built_in_leds:turnOnLed:1",
+            "@type": "Command",
+            "commandType": "synchronous",
+            "comment": "This Commands will turn-on the built-in LED light on the device.",
+            "name": "turnOnLed"
+          },
+          {
+            "@id": "urn:mxchip:built_in_leds:turnOffLed:1",
+            "@type": "Command",
+            "commandType": "synchronous",
+            "comment": "This Commands will turn-off the built-in LED light on the device.",
+            "name": "turnOffLed"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "urn:mxchip:mxchip_iot_devkit:screen:1",
+      "@type": "InterfaceInstance",
+      "name": "screen",
+      "schema": {
+        "@id": "urn:mxchip:screen:1",
+        "@type": "Interface",
+        "displayName": {
+          "en": "mxchip_screen"
+        },
+        "contents": [
+          {
+            "@id": "urn:mxchip:screen:echo:1",
+            "@type": "Command",
+            "commandType": "synchronous",
+            "request": {
+              "@id": "urn:mxchip:screen:echo:text:1",
+              "@type": "SchemaField",
+              "name": "text",
+              "schema": "string"
+            },
+            "response": {
+              "@id": "urn:mxchip:screen:echo:echoResponse:1",
+              "@type": "SchemaField",
+              "name": "echoResponse",
+              "schema": {
+                "@id": "urn:mxchip:screen:echo:echoResponse:ownk1p9fg:1",
+                "@type": "Object",
+                "fields": [
+                  {
+                    "@id": "urn:mxchip:screen:echo:echoResponse:ownk1p9fg:echo:1",
+                    "@type": "SchemaField",
+                    "name": "echo",
+                    "schema": "string"
+                  }
+                ]
+              }
+            },
+            "description": {
+              "en": "This command will echo the text string from cloud and show it on the onboard OLED screen."
+            },
+            "displayName": {
+              "en": "Echo"
+            },
+            "name": "echo"
+          },
+          {
+            "@id": "urn:mxchip:screen:countdown:1",
+            "@type": "Command",
+            "commandType": "synchronous",
+            "request": {
+              "@id": "urn:mxchip:screen:countdown:number:1",
+              "@type": "SchemaField",
+              "name": "number",
+              "schema": "integer"
+            },
+            "description": {
+              "en": "This command will show countdown number in the onboard OLED screen, and reboot the device once it's 0."
+            },
+            "displayName": {
+              "en": "Countdown"
+            },
+            "name": "countdown"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "urn:mxchip:mxchip_iot_devkit:settings:1",
+      "@type": "InterfaceInstance",
+      "name": "settings",
+      "schema": {
+        "@id": "urn:mxchip:settings:1",
+        "@type": "Interface",
+        "displayName": {
+          "en": "mxchip_settings"
+        },
+        "contents": [
+          {
+            "@id": "urn:mxchip:settings:fanSpeed:1",
+            "@type": "Property",
+            "displayName": {
+              "en": "Fan Speed"
+            },
+            "name": "fanSpeed",
+            "writable": true,
+            "schema": "double"
+          },
+          {
+            "@id": "urn:mxchip:settings:voltage:1",
+            "@type": "Property",
+            "displayName": {
+              "en": "Voltage"
+            },
+            "name": "voltage",
+            "writable": true,
+            "schema": "double"
+          },
+          {
+            "@id": "urn:mxchip:settings:current:1",
+            "@type": "Property",
+            "displayName": {
+              "en": "Current"
+            },
+            "name": "current",
+            "writable": true,
+            "schema": "double"
+          },
+          {
+            "@id": "urn:mxchip:settings:irSwitch:1",
+            "@type": "Property",
+            "displayName": {
+              "en": "IR"
+            },
+            "name": "irSwitch",
+            "writable": true,
+            "schema": "boolean"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "urn:mxchip:mxchip_iot_devkit:sensors:1",
+      "@type": "InterfaceInstance",
+      "name": "sensors",
+      "schema": {
+        "@id": "urn:mxchip:built_in_sensors:1",
+        "@type": "Interface",
+        "displayName": {
+          "en": "mxchip_sensor"
+        },
+        "contents": [
+          {
+            "@id": "urn:mxchip:built_in_sensors:humidity:1",
+            "@type": "Telemetry",
+            "comment": "The humidity measurement data from the built-in HTS221 sensor.",
+            "displayName": {
+              "en": "Humidity"
+            },
+            "name": "humidity",
+            "schema": "double"
+          },
+          {
+            "@id": "urn:mxchip:built_in_sensors:temperature:1",
+            "@type": "Telemetry",
+            "comment": "The temperature measurement data from the built-in HTS221 sensor.",
+            "displayName": {
+              "en": "Temperature"
+            },
+            "name": "temperature",
+            "schema": "double"
+          },
+          {
+            "@id": "urn:mxchip:built_in_sensors:pressure:1",
+            "@type": "Telemetry",
+            "comment": "The pressure measurement data from the built-in LPS22HB sensor.",
+            "displayName": {
+              "en": "Pressure"
+            },
+            "name": "pressure",
+            "schema": "double"
+          },
+          {
+            "@id": "urn:mxchip:built_in_sensors:magnetometer:1",
+            "@type": "Telemetry",
+            "comment": "The magnetism measurement data from the built-in LIS2MDL sensor.",
+            "displayName": {
+              "en": "Magnetometer"
+            },
+            "name": "magnetometer",
+            "schema": {
+              "@id": "urn:mxchip:built_in_sensors:magnetometer:xlg__pgun5:1",
+              "@type": "Object",
+              "fields": [
+                {
+                  "@id": "urn:mxchip:built_in_sensors:magnetometer:xlg__pgun5:x:1",
+                  "@type": "SchemaField",
+                  "name": "x",
+                  "schema": "integer"
+                },
+                {
+                  "@id": "urn:mxchip:built_in_sensors:magnetometer:xlg__pgun5:y:1",
+                  "@type": "SchemaField",
+                  "name": "y",
+                  "schema": "integer"
+                },
+                {
+                  "@id": "urn:mxchip:built_in_sensors:magnetometer:xlg__pgun5:z:1",
+                  "@type": "SchemaField",
+                  "name": "z",
+                  "schema": "integer"
+                }
+              ]
+            }
+          },
+          {
+            "@id": "urn:mxchip:built_in_sensors:gyroscope:1",
+            "@type": "Telemetry",
+            "comment": "The angular velocity measurement data from the built-in LSM6DSL sensor.",
+            "displayName": {
+              "en": "Gyroscope"
+            },
+            "name": "gyroscope",
+            "schema": {
+              "@id": "urn:mxchip:built_in_sensors:gyroscope:l7_f_bggoz:1",
+              "@type": "Object",
+              "fields": [
+                {
+                  "@id": "urn:mxchip:built_in_sensors:gyroscope:l7_f_bggoz:x:1",
+                  "@type": "SchemaField",
+                  "name": "x",
+                  "schema": "integer"
+                },
+                {
+                  "@id": "urn:mxchip:built_in_sensors:gyroscope:l7_f_bggoz:y:1",
+                  "@type": "SchemaField",
+                  "name": "y",
+                  "schema": "integer"
+                },
+                {
+                  "@id": "urn:mxchip:built_in_sensors:gyroscope:l7_f_bggoz:z:1",
+                  "@type": "SchemaField",
+                  "name": "z",
+                  "schema": "integer"
+                }
+              ]
+            }
+          },
+          {
+            "@id": "urn:mxchip:built_in_sensors:accelerometer:1",
+            "@type": "Telemetry",
+            "comment": "The proper acceleration measurement data from the built-in LSM6DSL sensor.",
+            "displayName": {
+              "en": "Accelerometer"
+            },
+            "name": "accelerometer",
+            "schema": {
+              "@id": "urn:mxchip:built_in_sensors:accelerometer:nuc8yxqzea:1",
+              "@type": "Object",
+              "fields": [
+                {
+                  "@id": "urn:mxchip:built_in_sensors:accelerometer:nuc8yxqzea:x:1",
+                  "@type": "SchemaField",
+                  "name": "x",
+                  "schema": "integer"
+                },
+                {
+                  "@id": "urn:mxchip:built_in_sensors:accelerometer:nuc8yxqzea:y:1",
+                  "@type": "SchemaField",
+                  "name": "y",
+                  "schema": "integer"
+                },
+                {
+                  "@id": "urn:mxchip:built_in_sensors:accelerometer:nuc8yxqzea:z:1",
+                  "@type": "SchemaField",
+                  "name": "z",
+                  "schema": "integer"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "@id": "urn:contosoartshipping:modeldef:1",
+      "@type": "InterfaceInstance",
+      "name": "urn_azureiot_ModelDiscovery_ModelDefinition",
+      "schema": {
+        "@id": "urn:azureiot:ModelDiscovery:ModelDefinition:1",
+        "@type": "Interface",
+        "displayName": {
+          "en": "Model Definition"
+        },
+        "contents": [
+          {
+            "@id": "urn:azureiot:ModelDiscovery:ModelDefinition:getModelDefinition:1",
+            "@type": "Command",
+            "commandType": "synchronous",
+            "request": {
+              "@id": "urn:azureiot:ModelDiscovery:ModelDefinition:getModelDefinition:id:1",
+              "@type": "SchemaField",
+              "description": {
+                "en": "Id of the capability model or interface for which the definition is needed. Request one at a time."
+              },
+              "name": "id",
+              "schema": "string"
+            },
+            "response": {
+              "@id": "urn:azureiot:ModelDiscovery:ModelDefinition:getModelDefinition:modelDefinition:1",
+              "@type": "SchemaField",
+              "description": {
+                "en": "JSON formatted definition for the capability model or interface Id. The full description will be sent back as a string."
+              },
+              "name": "modelDefinition",
+              "schema": "string"
+            },
+            "displayName": {
+              "en": "Get Model Definition"
+            },
+            "name": "getModelDefinition"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "urn:contosoartshipping:pos:1",
+      "@type": "InterfaceInstance",
+      "displayName": {
+        "en": "Location"
+      },
+      "name": "position",
+      "schema": {
+        "@id": "urn:contosoartshipping:position:1",
+        "@type": "Interface",
+        "displayName": {
+          "en": "Location"
+        },
+        "contents": [
+          {
+            "@id": "urn:contosoartshipping:position:location:1",
+            "@type": [
+              "Telemetry",
+              "SemanticType/Location"
+            ],
+            "comment": "",
+            "displayName": {
+              "en": "Location"
+            },
+            "name": "location",
+            "schema": "geopoint"
+          }
+        ]
+      }
+    }
+  ],
+  "displayName": {
+    "en": "Asset Tracker Contoso Art Shipping"
+  },
+  "contents": [],
+  "@context": [
+    "http://azureiot.com/v1/contexts/IoTModel.json"
+  ]
+}

@@ -32,7 +32,7 @@ typedef enum POSITION_TELEMETRY_TAG
 } POSITION_TELEMETRY;
 
 // DigitalTwin interface name from service perspective.
-static const char PositionInterfaceId[] = "urn:contoso:position:1";
+static const char PositionInterfaceId[] = "urn:contosoartshipping:position:1";
 static const char PositionInterfaceInstanceName[] = "position";
 
 // Telemetry names for this interface.
